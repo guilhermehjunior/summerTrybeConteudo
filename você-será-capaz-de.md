@@ -6,6 +6,4 @@
 
 * Utilizar o **RIGHT JOIN** para retornar os dados relacionados da tabela da *esquerda* e todos os dados da tabela da *direita*.
 
-* Utilizar o **FULL JOIN** para retornar todos os dados quando existe dados relacionados em qualquer uma das duas tabelas.
-
 * Utilizar o **SELF JOIN** quando deseja fazer uma comparação dentro de uma única tabela.

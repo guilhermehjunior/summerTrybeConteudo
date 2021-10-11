@@ -29,10 +29,10 @@ USE joins_exercises;
 
 CREATE TABLE filmes(
   id INT PRIMARY KEY AUTO_INCREMENT,
-  titulo VARCHAR(20) NOT NULL,
+  titulo VARCHAR(30) NOT NULL,
   duracao TINYINT NOT NULL,
   lingua VARCHAR(20) NOT NULL,
-  ano_lancamento INT NOT NULL,
+  ano_lancamento INT NOT NULL
 );
 
 

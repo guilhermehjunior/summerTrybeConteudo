@@ -32,21 +32,64 @@ A seguir imagens descritivas do **LEFT JOIN** e **RIGHT JOIN**:
 ![Imagem demonstrativa do RIGHT JOIN!](https://s3.us-east-2.amazonaws.com/assets.app.betrybe.com/back-end/sql/images/rightjoin-f8109b9bb4ea1ed927109d1e19a1a262.png)
 
 
-### FULL OUTER JOIN
-
-O **FULL OUTER JOIN** tem um comportamento parecido com o **RIGHT JOIN** e o **LEFT JOIN**, só que os dados apresentados são os dados inteiros de ambas as tabelas conectadas.
-
-A sintaxe é a seguinte:
-
-`SELECT t1.coluna1, t1.coluna2, t2.coluna1, t2.coluna2
-FROM tabela1 AS t1
-FULL OUTER JOIN tabela AS t2
-ON t1.coluna2 = t2.coluna2`
-
-Desta forma, teremos as colunas 1 e 2 da tabela 1 inteiras e as colunas 1 e 2 da tabela 2 inteiras e elas se interpondo onde a coluna 2 da tabela 1 for igual a coluna 2 da tabela 2.
-
-A seguir uma imagem demonstrativa do **FULL OUTER JOIN**
-
-![Imagem demonstrativa do FULL OUTER JOIN!](https://arquivo.devmedia.com.br/artigos/Fernanda_sallai/sql_join/image008.jpg)
-
 #### Exercícios de Fixação:
+
+Para os Exercícios, utilize a Base de Dados e tabelas a seguir (cole o código a seguir no seu *Workbench* selecione ele inteiro(ctrl + A) e aperte ctrl + Enter ou clique no ícone do raiozinho para rodá-lo):
+
+```
+CREATE DATABASE IF NOT EXISTS joins_exercises;
+
+USE joins_exercises;
+
+DROP TABLE IF EXISTS nome_cidade;
+
+CREATE TABLE nome_idade_2(
+  nome VARCHAR(20) PRIMARY KEY,
+  idade TINYINT NOT NULL
+);
+
+CREATE TABLE nome_cidade(
+  nome VARCHAR(20) PRIMARY KEY,
+  cidade VARCHAR(30) NOT NULL
+);
+
+INSERT INTO nome_idade_2(nome, idade)
+VALUES
+  ('Carlos', 20),
+  ('José', 25),
+  ('Sylvia', 21),
+  ('Victor', 20);
+
+INSERT INTO nome_cidade(nome, cidade)
+VALUES
+  ('Carlos', 'Curitiba'),
+  ('José', 'Belo Horizonte'),
+  ('Julia', 'São Paulo'),
+  ('Andressa', 'Salvador');
+```
+
+1. Monte uma *Query* com o **LEFT JOIN** que retorne todos os **nomes** da tabela **nome_idade_2** e as **cidades** deles.
+
+2. Monte uma *Query* com o **RIGHT JOIN** que retorne todos os nomes da tabela **nome_cidade** e as **idades** deles, ordene o resultado pela ordem alfabética dos nomes.
+
+
+#### Gabarito
+
+1. 
+```
+USE joins_exercises;
+SELECT ni2.nome, nc.cidade
+FROM nome_idade_2 AS ni2
+LEFT JOIN nome_cidade AS nc
+ON ni2.nome = nc.nome;
+```
+
+2.
+```
+USE joins_exercises;
+SELECT ni2.idade, nc.nome
+FROM nome_idade_2 AS ni2
+RIGHT JOIN nome_cidade AS nc
+ON ni2.nome = nc.nome
+ORDER BY nc.nome;
+```

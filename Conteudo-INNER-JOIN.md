@@ -1,6 +1,6 @@
 ## INNER JOIN
 
-O **INNER JOIN** permite juntar os dados relacionados de duas ou mais tabelas. A sintaxe é a seguinte:
+O **INNER JOIN** permite juntar os dados relacionados de duas ou mais tabelas. Como citado anteriormente, isso pode ser muito útil na hora de realizar relatórios, apresentar dados e entre outros, pois todas as informações podem ser vistas de uma só vez, sem precisar várias consultas.A sintaxe é a seguinte:
 
 ```
 SELECT t1.coluna, t2.coluna 
@@ -32,18 +32,18 @@ CREATE DATABASE IF NOT EXISTS joins_exercises;
 USE joins_exercises;
 
 CREATE TABLE nome_idade(
-  nome VARCHAR(20) NOT NULL,
-  idade TINYINT NOT NULL,
+  nome VARCHAR(20) PRIMARY KEY,
+  idade TINYINT NOT NULL
 );
 
 CREATE TABLE nome_cidade(
-  nome VARCHAR(20) NOT NULL,
-  cidade VARCHAR(30) NOT NULL,
+  nome VARCHAR(20) PRIMARY KEY,
+  cidade VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE cidade_estado(
-  cidade VARCHAR(20) NOT NULL,
-  estado VARCHAR(20) NOT NULL,
+  cidade VARCHAR(20) PRIMARY KEY,
+  estado VARCHAR(20) NOT NULL
 );
 
 INSERT INTO nome_idade(nome, idade)
@@ -53,14 +53,14 @@ VALUES
   ('Julia', 21),
   ('Andressa', 20);
 
-INSERT INTO nome_cidade(nome, idade)
+INSERT INTO nome_cidade(nome, cidade)
 VALUES
   ('Carlos', 'Curitiba'),
   ('José', 'Belo Horizonte'),
   ('Julia', 'São Paulo'),
   ('Andressa', 'Salvador');
 
-INSERT INTO cidade_estado(nome, idade)
+INSERT INTO cidade_estado(cidade, estado)
 VALUES
   ('Curitiba', 'PR'),
   ('Belo Horizonte', 'MG'),
@@ -82,7 +82,7 @@ USE joins_exercises;
 SELECT ni.nome, nc.cidade, ni.idade 
 FROM nome_idade AS ni
 INNER JOIN nome_cidade AS nc
-ON ni.nome = nc.nome
+ON ni.nome = nc.nome;
 ```
 
 2. 
@@ -91,7 +91,7 @@ USE joins_exercises;
 SELECT nc.nome, ce.estado
 FROM nome_cidade AS nc
 INNER JOIN cidade_estado AS ce
-ON nc.cidade = ce.cidade
+ON nc.cidade = ce.cidade;
 ```
 
 3. 
@@ -103,5 +103,5 @@ INNER JOIN nome_cidade AS nc
 ON ni.nome = nc.nome
 INNER JOIN cidade_estado AS ce
 ON nc.cidade = ce.cidade
-WHERE ni.idade < 23
+WHERE ni.idade < 23;
 ```
