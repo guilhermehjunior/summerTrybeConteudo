@@ -24,7 +24,7 @@ A principal importância dele é ajudar na identificação de uma parte da query
 
 Para os Exercícios, utilize a Base de Dados e tabelas a seguir (cole o código a seguir no seu *Workbench* selecione ele inteiro(ctrl + A) e aperte ctrl + Enter ou clique no ícone do raiozinho para rodá-lo):
 
-`CREATE DATABASE IF NOT EXISTS joins_exercises;
+"CREATE DATABASE IF NOT EXISTS joins_exercises;
 
 USE joins_exercises;
 
@@ -62,7 +62,7 @@ VALUES
   ('Curitiba', 'PR'),
   ('Belo Horizonte', 'MG'),
   ('São Paulo', 'SP'),
-  ('Salvador', 'BA');`
+  ('Salvador', 'BA');"
 
   1. Monte uma *Query* que exiba o **nome**, a **cidade** e a **idade** de todas as pessoas na tabela nome_idade.
 
@@ -72,23 +72,23 @@ VALUES
 
   #### Gabarito
 
-  1. `USE joins_exercises;
+  1. "USE joins_exercises;
   SELECT ni.nome, nc.cidade, ni.idade 
   FROM nome_idade AS ni
   INNER JOIN nome_cidade AS nc
-  ON ni.nome = nc.nome`
+  ON ni.nome = nc.nome"
 
-  2. `USE joins_exercises;
+  2. "USE joins_exercises;
   SELECT nc.nome, ce.estado
   FROM nome_cidade AS nc
   INNER JOIN cidade_estado AS ce
-  ON nc.cidade = ce.cidade`
+  ON nc.cidade = ce.cidade"
 
-  3. `USE joins_exercises;
+  3. "USE joins_exercises;
   SELECT ni.nome, nc.cidade, ni.idade, ce.estado
   FROM nome_idade AS ni
   INNER JOIN nome_cidade AS nc
   ON ni.nome = nc.nome
   INNER JOIN cidade_estado AS ce
   ON nc.cidade = ce.cidade
-  WHERE ni.idade < 23`
+  WHERE ni.idade < 23"
