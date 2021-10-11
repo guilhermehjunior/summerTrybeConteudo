@@ -20,6 +20,16 @@ Para os exercícios, utilizaremos o banco de dados [sakila](https://s3.us-east-2
 
 9. Monte uma *Query* que mostre o **título dos filmes** e seus **recursos adicionais(special_features)** para os filmes com a mesma **classificação etária(rating)**.
 
+10. Monte uma *Query* que mostre as **cidades** que estão no mesmo país e o **código do país**(id), retire a própria cidade(já que com certeza ela estará no mesmo país que ela mesma :D) e ordene pelo código **decrescente** do país e depois pelo nome da cidade.
+
+#### Bônus
+
+11. Monte uma *Query* que mostre o **primeiro nome do ator(actor)**, os **títulos**, a **duração** e a **classificação etária** dos filmes, em que esse ator apareceu e o filme teve **mais de 85 minutos** e uma classificação etária **PG** . Ordene pelo nome do ator, no caso do mesmo nome, ordene pelo título do filme em ordem alfabética.
+
+12. Monte uma *Query* que mostre o **título do filme** e a sua **categoria**, para todos os filmes que começarem com a **letra C** e tenham a categoria **ação(Action)**, ordene pelo título do filme em ordem alfabética.
+
+13. Monte uma *Query* que mostre o **nome completo do ator** (com *Alias* nome), os **títulos dos filmes** em que participou e a **categoria**(com *Alias* categoria) desses filmes;
+
 #### Gabaritos
 
 1. 
@@ -113,6 +123,16 @@ FROM film AS t1, film AS t2
 WHERE t1.rating = t2.rating;
 ```
 
+10.
+```
+USE sakila;
+SELECT t1.city, t2.city, t1.country_id
+FROM city AS t1, city AS t2
+WHERE t1.country_id = t2.country_id
+AND t1.city <> t2.city
+ORDER BY t1.country_id, t1.city;
+```
+
 11. 
 ```
 USE sakila;
@@ -144,19 +164,15 @@ ORDER BY f.title;
 13.
 ```
 USE sakila;
-SELECT CONCAT(a.FIRST_NAME, ' ', a.LAST_NAME) AS `nome` , f.title
+SELECT CONCAT(a.FIRST_NAME, ' ', a.LAST_NAME) AS `nome` , f.title, c.name AS categoria
 FROM film_actor AS fa
 INNER JOIN actor AS a
 ON a.actor_id = fa.actor_id
 INNER JOIN film AS f
 ON f.film_id = fa.film_id
+INNER JOIN film_category AS fc
+ON f.film_id = fc.film_id
+INNER JOIN category AS c
+ON c.category_id = fc.category_id
 ORDER BY `nome`, f.title;
 ```
-
-#### Bônus
-
-11. Monte uma *Query* que mostre o **primeiro nome do ator(actor)**, os **títulos**, a **duração** e a **classificação etária** dos filmes, em que esse ator apareceu e o filme teve **mais de 85 minutos** e uma classificação etária **PG** . Ordene pelo nome do ator, no caso do mesmo nome, ordene pelo título do filme em ordem alfabética.
-
-12. Monte uma *Query* que mostre o **título do filme** e a sua **categoria**, para todos os filmes que começarem com a **letra C** e tenham a categoria **ação(Action)**, ordene pelo título do filme em ordem alfabética.
-
-13. Monte uma *Query* que mostre o **nome completo do ator** (com *Alias* nome), os **títulos dos filmes** em que participou e a **categoria** desses filmes;
