@@ -2,10 +2,10 @@
 
 O **INNER JOIN** permite juntar os dados relacionados de duas ou mais tabelas. A sintaxe é a seguinte:
 
-```SELECT t1.coluna, t2.coluna 
+``SELECT t1.coluna, t2.coluna 
 FROM tabela1 AS t1
 INNER JOIN tabela AS t2
-ON t1.coluna_em_comum = t2.coluna_em_comum```
+ON t1.coluna_em_comum = t2.coluna_em_comum``
 
 A **tabela1** e a **tabela2** são as que possuem os dados relacionados e o **ON** é a condição para conectar essas tabelas (o dado relacionado).
 
@@ -24,7 +24,7 @@ A principal importância dele é ajudar na identificação de uma parte da query
 
 Para os Exercícios, utilize a Base de Dados e tabelas a seguir (cole o código a seguir no seu *Workbench* selecione ele inteiro(ctrl + A) e aperte ctrl + Enter ou clique no ícone do raiozinho para rodá-lo):
 
-```CREATE DATABASE IF NOT EXISTS joins_exercises;
+``CREATE DATABASE IF NOT EXISTS joins_exercises;
 
 USE joins_exercises;
 
@@ -62,7 +62,7 @@ VALUES
   ('Curitiba', 'PR'),
   ('Belo Horizonte', 'MG'),
   ('São Paulo', 'SP'),
-  ('Salvador', 'BA');```
+  ('Salvador', 'BA');``
 
   1. Monte uma *Query* que exiba o **nome**, a **cidade** e a **idade** de todas as pessoas na tabela nome_idade.
 
